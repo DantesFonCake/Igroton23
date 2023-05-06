@@ -7,6 +7,7 @@ public class DirectionalMovementController : MonoBehaviour
     [Header("Movement Settings")]
     public float drag = 1;
     public float speed = 10;
+    public bool rotate = true;
 
     private Rigidbody2D boatBody;
     private DirectionController directionController;
@@ -16,6 +17,7 @@ public class DirectionalMovementController : MonoBehaviour
     {
         boatBody = GetComponent<Rigidbody2D>();
         directionController = GetComponent<DirectionController>();
+        boatBody.constraints = rotate ? RigidbodyConstraints2D.None : RigidbodyConstraints2D.FreezeRotation;
     }
 
     private void FixedUpdate()
@@ -23,7 +25,8 @@ public class DirectionalMovementController : MonoBehaviour
         var nextVelocity = Vector2.ClampMagnitude(velocityRequest, speed);
         boatBody.velocity = nextVelocity;
         boatBody.drag = nextVelocity.SqrMagnitude() == 0 ? drag : 0;
-        boatBody.MoveRotation(directionController.GetRotationAngle());
+        if(rotate)
+            boatBody.MoveRotation(directionController.GetRotationAngle());
     }
 
     public void ApplyDirectionalVelocity(Vector2 velocity)

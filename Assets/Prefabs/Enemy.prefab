@@ -177,7 +177,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b583d7cf74ffae4b868822bb2097b91, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  upColor: {r: 1, g: 0, b: 0, a: 1}
-  downColor: {r: 0.05958529, g: 0.11863042, b: 0.9716981, a: 1}
-  leftColor: {r: 0, g: 1, b: 0.21235394, a: 1}
-  rightColor: {r: 1, g: 0, b: 0.88550186, a: 1}
+  upSprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
+  downSprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
+  leftSprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
+  rightSprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}

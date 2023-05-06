@@ -9,10 +9,10 @@ public class DirectionalSpriteController : MonoBehaviour
     private SpriteRenderer sprite;
     
     [Header("Sprites Selection")] 
-    public Color upColor;
-    public Color downColor;
-    public Color leftColor;
-    public Color rightColor;
+    public Sprite upSprite;
+    public Sprite downSprite;
+    public Sprite leftSprite;
+    public Sprite rightSprite;
 
     private void Awake()
     {
@@ -22,12 +22,12 @@ public class DirectionalSpriteController : MonoBehaviour
     
     private void Update()
     {
-        sprite.color = directionController.LastDirection switch
+        sprite.sprite = directionController.LastDirection switch
         {
-            Direction.Up => upColor,
-            Direction.Down => downColor,
-            Direction.Left => leftColor,
-            Direction.Right => rightColor,
+            Direction.Up => upSprite,
+            Direction.Down => downSprite,
+            Direction.Left => leftSprite,
+            Direction.Right => rightSprite,
             _ => throw new ArgumentOutOfRangeException(nameof(directionController.LastDirection),
                 directionController.LastDirection, null)
         };
