@@ -1,14 +1,16 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
+
 
 public class Player : MonoBehaviour
 {
-    public float Health { get; private set; } = GameConst.MaxHealth;
+    public float Health { get; private set; } = GameConst.MaxHealth * GameConst.WaveCount;
     public HealthBar HealthBar;
     public ScaneChange ScaneChange;
 
-    public void TakeDamage()
+    public void TakeDamage(float value = 20)
     {
-        Health -= 20;
+        Health -= value;
         Debug.Log($"Current HP: {Health}");
         HealthBar.UpdateHealthBar();
     }
@@ -18,7 +20,7 @@ public class Player : MonoBehaviour
         // Example so we can test the Health Bar functionality
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            TakeDamage(); 
+            TakeDamage();
         }
 
         if (Health <= 0)
