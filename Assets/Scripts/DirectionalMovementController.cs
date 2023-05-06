@@ -4,13 +4,13 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody2D))]
 public class DirectionalMovementController : MonoBehaviour
 {
-    [Header("Movement Settings")] public float accelerationFactor = 1;
+    [Header("Movement Settings")]
     public float drag = 1;
-    public float maxSpeed = 10;
+    public float speed = 10;
 
     private Rigidbody2D boatBody;
     private DirectionController directionController;
-    private Vector2 acceleration;
+    private Vector2 velocityRequest;
 
     private void Awake()
     {
@@ -20,18 +20,16 @@ public class DirectionalMovementController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        boatBody.AddForce(acceleration * accelerationFactor, ForceMode2D.Force);
-        boatBody.velocity = Vector2.ClampMagnitude(boatBody.velocity, maxSpeed);
-        boatBody.drag = acceleration.SqrMagnitude() == 0 ? drag : 0;
-        boatBody.MoveRotation(directionController.LastDirection.GetRotationAngle());
+        var nextVelocity = Vector2.ClampMagnitude(velocityRequest, speed);
+        boatBody.velocity = nextVelocity;
+        boatBody.drag = nextVelocity.SqrMagnitude() == 0 ? drag : 0;
+        boatBody.MoveRotation(directionController.GetRotationAngle());
     }
 
-    public void ApplyDirectionalAcceleration(float horizontalMagnitude, float verticalMagnitude)
+    public void ApplyDirectionalVelocity(Vector2 velocity)
     {
-        var newAcceleration = new Vector2(horizontalMagnitude, verticalMagnitude);
-
-        directionController.ApplyDirectionChange(horizontalMagnitude, verticalMagnitude);
-
-        acceleration = newAcceleration;
+        velocityRequest = velocity * speed;
+        
+        directionController.ApplyDirectionChange(velocity.x, velocity.y);
     }
 }

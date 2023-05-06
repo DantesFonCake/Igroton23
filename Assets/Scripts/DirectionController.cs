@@ -31,4 +31,13 @@ public class DirectionController : MonoBehaviour
         lastHMagnitude = horizontalMagnitude;
         lastVMagnitude = verticalMagnitude;
     }
+    
+    public float GetRotationAngle() => LastDirection switch
+    {
+        Direction.Up => 0,
+        Direction.Down => 180,
+        Direction.Left => -90,
+        Direction.Right => 90,
+        _ => throw new ArgumentOutOfRangeException(nameof(LastDirection), LastDirection, null)
+    };
 }

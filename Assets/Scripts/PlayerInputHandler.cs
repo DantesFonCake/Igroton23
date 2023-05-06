@@ -15,6 +15,6 @@ public class PlayerInputHandler : MonoBehaviour
         var x = Input.GetAxis("Horizontal");
         var y = Input.GetAxis("Vertical");
 
-        playerController.ApplyDirectionalAcceleration(x, y);
+        playerController.ApplyDirectionalVelocity(new Vector2(x, y));
     }
 }
