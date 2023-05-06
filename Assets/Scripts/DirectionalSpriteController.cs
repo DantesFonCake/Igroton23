@@ -1,15 +1,13 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Serialization;
 
-[RequireComponent(typeof(DirectionalMovementController))]
+[RequireComponent(typeof(DirectionController))]
 public class DirectionalSpriteController : MonoBehaviour
 {
-    private DirectionalMovementController movementController;
+    private DirectionController directionController;
     //TODO: need to render sprites not color
     private SpriteRenderer sprite;
+    
     [Header("Sprites Selection")] 
     public Color upColor;
     public Color downColor;
@@ -18,20 +16,20 @@ public class DirectionalSpriteController : MonoBehaviour
 
     private void Awake()
     {
-        movementController = GetComponent<DirectionalMovementController>();
+        directionController = GetComponent<DirectionController>();
         sprite = GetComponent<SpriteRenderer>();
     }
     
     private void Update()
     {
-        sprite.color = movementController.LastDirection switch
+        sprite.color = directionController.LastDirection switch
         {
             Direction.Up => upColor,
             Direction.Down => downColor,
             Direction.Left => leftColor,
             Direction.Right => rightColor,
-            _ => throw new ArgumentOutOfRangeException(nameof(movementController.LastDirection),
-                movementController.LastDirection, null)
+            _ => throw new ArgumentOutOfRangeException(nameof(directionController.LastDirection),
+                directionController.LastDirection, null)
         };
     }
 }
