@@ -714,7 +714,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5bb417e5dee0fc54890c1f360257bf62, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemy: {fileID: 0}
+  enemy: {fileID: 817134979}
 --- !u!4 &1026493604
 Transform:
   m_ObjectHideFlags: 0
@@ -1108,6 +1108,10 @@ PrefabInstance:
     - target: {fileID: 750160196516625975, guid: f4ad383fb69c4bf49b8ba6397b9a5521, type: 3}
       propertyPath: m_Name
       value: Boat
+      objectReference: {fileID: 0}
+    - target: {fileID: 1763648561912365286, guid: f4ad383fb69c4bf49b8ba6397b9a5521, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1763648561912365290, guid: f4ad383fb69c4bf49b8ba6397b9a5521, type: 3}
       propertyPath: followingCamera
