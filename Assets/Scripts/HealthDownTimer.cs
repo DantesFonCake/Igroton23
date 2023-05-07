@@ -11,8 +11,8 @@ public class HealthDownTimer : MonoBehaviour
 
     private void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
-        spawner = GetComponent<Spawner>();
+        player = GameObject.FindGameObjectWithTag(GameConst.Tags.Player).GetComponent<Player>();
+        spawner = GameObject.Find("Spawner").GetComponent<Spawner>();
     }
 
     public void Update()
