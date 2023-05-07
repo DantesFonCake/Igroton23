@@ -9,11 +9,12 @@ public class EnemyController : MonoBehaviour
     private void Awake()
     {
         selfController = GetComponent<DirectionalMovementController>();
-        playerTransform = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
+        playerTransform = GameObject.FindGameObjectWithTag(GameConst.Tags.Player).GetComponent<Transform>();
     }
 
     private void Update()
     {
+
         var position = (Vector2)transform.position;
         var nextPosition =
             Vector2.MoveTowards(position, playerTransform.position, Time.deltaTime * selfController.speed);

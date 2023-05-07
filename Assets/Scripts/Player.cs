@@ -7,11 +7,20 @@ public class Player : MonoBehaviour
     
     public HealthBar healthBar;
     public SceneChange sceneChange;
-
+    
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag(GameConst.Tags.Enemy))
+        {
+            sceneChange.MoveToDieScene();
+        }
+        
+    }
+    
     public void TakeDamage(float value = 20)
     {
         Health -= value;
-        Debug.Log($"Current HP: {Health}");
+        //Debug.Log($"Current HP: {Health}");
         healthBar.UpdateHealthBar(Health);
     }
 

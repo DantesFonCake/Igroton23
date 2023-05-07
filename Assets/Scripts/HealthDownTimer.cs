@@ -17,7 +17,7 @@ public class HealthDownTimer : MonoBehaviour
 
     public void Update()
     {
-        Debug.Log($"Current timer value = {TargetTimeInSeconds}");
+        //Debug.Log($"Current timer value = {TargetTimeInSeconds}");
         if (TargetTimeInSeconds <= 0)
         {
             currentIteration++;
